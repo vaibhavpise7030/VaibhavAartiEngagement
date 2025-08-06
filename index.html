@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"/>
+  <title>Vaibhav & Aarti | Engagement Invite</title>
+
+  <!-- SweetAlert2 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+
+  <!-- TypeIt Typewriter -->
+  <script src="https://unpkg.com/typeit@8.7.0/dist/index.umd.js"></script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quicksand:wght@400;700&display=swap" rel="stylesheet"/>
+
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin:0; padding:0; width:100%; height:100%; overflow-x:hidden; font-family:'Quicksand',sans-serif; }
+    body {
+      background: #ffe6f2;
+      position: relative;
+      text-align: center;
+	  overflow-x: hidden;
+		overflow-y: hidden; /* prevent scroll caused by animations */
+		position: relative;
+		height: 100vh; /* limit body height */
+    }
+    body::before {
+      content:""; position:fixed; top:0; left:0; width:100%; height:100%;
+      background: radial-gradient(circle, #ffcce6, transparent 80%);
+      filter: blur(200px); opacity:0.4; z-index:-1;
+    }
+
+    h1 { font-family:'Great Vibes',cursive; font-size:3rem; margin:1rem 0 0.5rem; color:#c7007f; }
+    #intro { font-size:1.1rem; margin:0 1rem 1.5rem; color:#660038; }
+
+    #countdown { display:flex; justify-content:center; gap:1rem; flex-wrap:wrap; margin:1rem auto; max-width:90%; }
+    .unit {
+      background:#c7007f; color:#fff; padding:0.8rem; border-radius:12px;
+      width:80px; display:flex; flex-direction:column; align-items:center;
+      transform: translateY(0); transition:transform .3s;
+    }
+    .unit:hover { transform: translateY(-5px); }
+    .unit .num { font-size:1.8rem; font-family:'Great Vibes'; }
+    .unit .label { font-size:0.9rem; margin-top:0.2rem; }
+
+    .buttons { display:flex; flex-wrap:wrap; justify-content:center; gap:1rem; margin:1.5rem 0; }
+    .buttons a {
+      background:#c7007f; color:#fff; padding:0.7rem 1.5rem; border-radius:25px;
+      text-decoration:none; font-size:1rem; min-width:140px; display:inline-block;
+      transition:background .3s;
+    }
+    .buttons a:hover { background:#900054; }
+
+    .message { font-size:1rem; max-width:90%; margin:1rem auto; color:#660038; line-height:1.4; }
+
+    .contact { display:flex; justify-content:center; gap:2rem; margin:1.5rem auto; }
+    .contact a { font-size:2.5rem; color:inherit; transition:transform .2s; }
+    .contact a.whatsapp { color:#25D366; }
+    .contact a.call { color:#007bff; }
+    .contact a:hover { transform:scale(1.2); }
+
+    #flowers { position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; overflow:hidden; z-index:-1; }
+
+    .flower { position:absolute; width:30px; height:30px; background:url('assets/images/flower.png') no-repeat center/contain; animation:drop linear infinite; opacity:0.7; }
+    @keyframes drop { from{transform:translateY(-20px) rotate(0);} to{transform:translateY(100vh) rotate(360deg);} }
+
+    .heart { position:absolute; font-size:24px; color:#f06292; opacity:0.6; animation:rise linear infinite; }
+    @keyframes rise { from{transform:translateY(0);} to{transform:translateY(100vh);} }
+
+    audio { display:none; }
+
+    @media(max-width:600px) {
+      h1 { font-size:2.3rem; }
+      .unit { width:45%; }
+      .buttons a { width:45%; font-size:0.9rem; padding:0.6rem; }
+      .contact a { font-size:2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <audio id="bgm" src="assets/song.mp3" loop muted playsinline></audio>
+
+  <h1>Vaibhav & Aarti</h1>
+  <div id="intro"></div>
+
+  <div id="countdown">
+    <div class="unit"><div id="days" class="num">0</div><div class="label">Days</div></div>
+    <div class="unit"><div id="hours" class="num">0</div><div class="label">Hrs</div></div>
+    <div class="unit"><div id="minutes" class="num">0</div><div class="label">Mins</div></div>
+    <div class="unit"><div id="seconds" class="num">0</div><div class="label">Secs</div></div>
+  </div>
+
+  <div class="buttons">
+    <a href="https://maps.app.goo.gl/FEnFQJp2pfHZmMyS7" target="_blank">📍 Venue</a>
+    <a href="assets/invite-card.jpeg" download>📄 Download Invite</a>
+  </div>
+
+  <div class="message">
+    We can’t wait to celebrate our engagement with you!<br>
+    Your presence and blessings mean the world to us.<br><br>
+    💖 Join us as we begin our forever 💖
+  </div>
+
+  <div class="contact">
+    <a href="https://wa.me/917030888685" target="_blank" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+    <a href="tel:+917030888685" class="call"><i class="fas fa-phone-alt"></i></a>
+  </div>
+
+  <div id="flowers"></div>
+
+  <script>
+    // Popup on load
+    Swal.fire({
+      title: 'Save the Date 💍',
+      html: '<strong>Vaibhav & Aarti<br>17 August 2025</strong>',
+      background: '#ffe6f2',
+      confirmButtonColor: '#c7007f',
+      confirmButtonText: 'RSVP'
+    });
+
+    // Intro typewriter
+    new TypeIt('#intro', {
+      strings: ['You are cordially invited to our engagement celebration.'],
+      speed: 45, waitUntilVisible:true
+    }).go();
+
+    // Countdown logic
+    const target = new Date('2025-08-17T18:00:00').getTime();
+    function refresh() {
+      let now = Date.now(), diff = target - now;
+      if (diff < 0) {
+        clearInterval(interval); 
+        document.getElementById('countdown').innerHTML = '<div style="font-size:1.4rem;color:#c7007f;">It’s today! 🎉</div>';
+        return;
+      }
+      const d = Math.floor(diff/86400000), h = Math.floor((diff%86400000)/3600000),
+            m = Math.floor((diff%3600000)/60000), s = Math.floor((diff%60000)/1000);
+      document.getElementById('days').textContent = d;
+      document.getElementById('hours').textContent = h;
+      document.getElementById('minutes').textContent = m;
+      document.getElementById('seconds').textContent = s;
+    }
+    refresh(); const interval=setInterval(refresh,1000);
+
+    // Flower animation spawner
+    function spawnFlower() {
+      const f=document.createElement('div');
+      f.className='flower';
+      let size = 20 + Math.random()*20;
+      f.style.width=f.style.height=size+'px';
+      f.style.left= Math.random()*100+'vw';
+      f.style.animationDuration= (6 + Math.random()*4)+'s';
+      document.getElementById('flowers').appendChild(f);
+      f.addEventListener('animationend', () => f.remove());
+    }
+    setInterval(spawnFlower,350);
+
+    // Heart animation spawner
+    function spawnHeart() {
+      const h=document.createElement('div');
+      h.className='heart';
+      h.textContent='❤️';
+      h.style.left= Math.random()*100+'vw';
+      h.style.animationDuration=(4+Math.random()*3)+'s';
+      document.body.appendChild(h);
+      h.addEventListener('animationend', () => h.remove());
+    }
+    setInterval(spawnHeart,900);
+
+    // Enable background music on interaction
+    const bgm = document.getElementById('bgm');
+    function enableMusic() {
+      bgm.muted = false;
+      bgm.play().catch(console.warn);
+      document.removeEventListener('click', enableMusic);
+      document.removeEventListener('touchstart', enableMusic);
+    }
+    document.addEventListener('click', enableMusic);
+    document.addEventListener('touchstart', enableMusic);
+  </script>
+
+</body>
+</html>
