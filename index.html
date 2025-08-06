@@ -1,190 +1,381 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"/>
-  <title>Vaibhav & Aarti | Engagement Invite</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Vaibhav & Aarti — Engagement Invitation</title>
 
-  <!-- SweetAlert2 -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css"/>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
 
-  <!-- TypeIt Typewriter -->
-  <script src="https://unpkg.com/typeit@8.7.0/dist/index.umd.js"></script>
+<!-- FontAwesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<style>
+  /* Reset & base */
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
+  body {
+    min-height: 100vh;
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, #ffdde1 0%, #ee9ca7 100%);
+    overflow-x: hidden;
+    color: #4a0033;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+  }
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quicksand:wght@400;700&display=swap" rel="stylesheet"/>
+  /* Heading */
+  h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 4rem;
+    color: #a1004a;
+    text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.7);
+    margin-bottom: 10px;
+    opacity: 0;
+    animation: fadeInUp 1.2s forwards;
+  }
 
-  <style>
-    * { box-sizing: border-box; }
-    html, body { margin:0; padding:0; width:100%; height:100%; overflow-x:hidden; font-family:'Quicksand',sans-serif; }
-    body {
-      background: #ffe6f2;
-      position: relative;
-      text-align: center;
-	  overflow-x: hidden;
-		overflow-y: hidden; /* prevent scroll caused by animations */
-		position: relative;
-		height: 100vh; /* limit body height */
+  /* Intro text */
+  #intro {
+    font-size: 1.3rem;
+    max-width: 400px;
+    text-align: center;
+    margin-bottom: 30px;
+    opacity: 0;
+    animation: fadeInUp 1.2s 0.5s forwards;
+    line-height: 1.5;
+  }
+
+  /* Countdown container */
+  #countdown {
+    display: flex;
+    gap: 25px;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px 35px;
+    border-radius: 35px;
+    box-shadow: 0 6px 20px rgba(201, 0, 89, 0.4);
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: fadeInUp 1.2s 1s forwards;
+  }
+
+  /* Each countdown block */
+  .countdown-unit {
+    flex: 1;
+    text-align: center;
+    font-weight: 600;
+    cursor: default;
+    transition: transform 0.3s ease;
+    user-select: none;
+  }
+  .countdown-unit:hover {
+    transform: scale(1.1);
+  }
+  .countdown-number {
+    font-size: 3.2rem;
+    font-family: 'Great Vibes', cursive;
+    color: #a1004a;
+    text-shadow: 1px 1px 5px rgba(201, 0, 89, 0.7);
+  }
+  .countdown-label {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 4px;
+    color: #7a0035;
+  }
+
+  /* Buttons container */
+  .buttons {
+    display: flex;
+    gap: 25px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+    opacity: 0;
+    animation: fadeInUp 1.2s 1.5s forwards;
+  }
+  .btn {
+    background: #a1004a;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 15px 35px;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 6px 15px rgba(201, 0, 89, 0.5);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+  .btn:hover {
+    background: #7a0035;
+    transform: scale(1.1);
+  }
+  .btn i {
+    font-size: 1.4rem;
+  }
+
+  /* Message */
+  .message {
+    font-size: 1.25rem;
+    max-width: 380px;
+    text-align: center;
+    font-style: italic;
+    color: #7a0035;
+    margin-bottom: 50px;
+    opacity: 0;
+    animation: fadeInUp 1.2s 2s forwards;
+    line-height: 1.4;
+  }
+
+  /* Contact icons */
+  .contact {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: fadeInUp 1.2s 2.5s forwards;
+  }
+  .contact a {
+    font-size: 2.8rem;
+    color: #a1004a;
+    transition: transform 0.25s ease;
+  }
+  .contact a.whatsapp {
+    color: #25d366;
+  }
+  .contact a.call {
+    color: #007bff;
+  }
+  .contact a:hover {
+    transform: scale(1.3);
+  }
+
+  /* Floating hearts and petals */
+  .floating {
+    position: fixed;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+    font-size: 24px;
+    animation-timing-function: linear;
+  }
+  .heart {
+    color: #ff69b4;
+    animation-name: floatUp;
+  }
+  .petal {
+    color: #ff6f91;
+    animation-name: floatUpPetal;
+  }
+
+  @keyframes floatUp {
+    0% {
+      transform: translateY(0) rotate(0deg);
+      opacity: 1;
     }
-    body::before {
-      content:""; position:fixed; top:0; left:0; width:100%; height:100%;
-      background: radial-gradient(circle, #ffcce6, transparent 80%);
-      filter: blur(200px); opacity:0.4; z-index:-1;
+    100% {
+      transform: translateY(-100vh) rotate(360deg);
+      opacity: 0;
     }
-
-    h1 { font-family:'Great Vibes',cursive; font-size:3rem; margin:1rem 0 0.5rem; color:#c7007f; }
-    #intro { font-size:1.1rem; margin:0 1rem 1.5rem; color:#660038; }
-
-    #countdown { display:flex; justify-content:center; gap:1rem; flex-wrap:wrap; margin:1rem auto; max-width:90%; }
-    .unit {
-      background:#c7007f; color:#fff; padding:0.8rem; border-radius:12px;
-      width:80px; display:flex; flex-direction:column; align-items:center;
-      transform: translateY(0); transition:transform .3s;
+  }
+  @keyframes floatUpPetal {
+    0% {
+      transform: translateY(0) rotate(0deg) translateX(0);
+      opacity: 1;
     }
-    .unit:hover { transform: translateY(-5px); }
-    .unit .num { font-size:1.8rem; font-family:'Great Vibes'; }
-    .unit .label { font-size:0.9rem; margin-top:0.2rem; }
-
-    .buttons { display:flex; flex-wrap:wrap; justify-content:center; gap:1rem; margin:1.5rem 0; }
-    .buttons a {
-      background:#c7007f; color:#fff; padding:0.7rem 1.5rem; border-radius:25px;
-      text-decoration:none; font-size:1rem; min-width:140px; display:inline-block;
-      transition:background .3s;
+    100% {
+      transform: translateY(-110vh) rotate(720deg) translateX(50px);
+      opacity: 0;
     }
-    .buttons a:hover { background:#900054; }
+  }
 
-    .message { font-size:1rem; max-width:90%; margin:1rem auto; color:#660038; line-height:1.4; }
-
-    .contact { display:flex; justify-content:center; gap:2rem; margin:1.5rem auto; }
-    .contact a { font-size:2.5rem; color:inherit; transition:transform .2s; }
-    .contact a.whatsapp { color:#25D366; }
-    .contact a.call { color:#007bff; }
-    .contact a:hover { transform:scale(1.2); }
-
-    #flowers { position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; overflow:hidden; z-index:-1; }
-
-    .flower { position:absolute; width:30px; height:30px; background:url('assets/images/flower.png') no-repeat center/contain; animation:drop linear infinite; opacity:0.7; }
-    @keyframes drop { from{transform:translateY(-20px) rotate(0);} to{transform:translateY(100vh) rotate(360deg);} }
-
-    .heart { position:absolute; font-size:24px; color:#f06292; opacity:0.6; animation:rise linear infinite; }
-    @keyframes rise { from{transform:translateY(0);} to{transform:translateY(100vh);} }
-
-    audio { display:none; }
-
-    @media(max-width:600px) {
-      h1 { font-size:2.3rem; }
-      .unit { width:45%; }
-      .buttons a { width:45%; font-size:0.9rem; padding:0.6rem; }
-      .contact a { font-size:2rem; }
+  /* FadeInUp animation */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
     }
-  </style>
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Responsive */
+  @media (max-width: 480px) {
+    h1 {
+      font-size: 2.8rem;
+    }
+    #intro {
+      font-size: 1.1rem;
+      max-width: 90%;
+    }
+    #countdown {
+      flex-direction: column;
+      gap: 15px;
+      padding: 20px 25px;
+      border-radius: 25px;
+    }
+    .countdown-unit {
+      font-size: 1rem;
+    }
+    .countdown-number {
+      font-size: 2.4rem;
+    }
+    .buttons {
+      flex-direction: column;
+      gap: 20px;
+    }
+    .btn {
+      width: 100%;
+      justify-content: center;
+      font-size: 1rem;
+      padding: 12px 0;
+    }
+    .message {
+      font-size: 1.1rem;
+      max-width: 95%;
+    }
+    .contact a {
+      font-size: 2.3rem;
+    }
+  }
+</style>
 </head>
 <body>
-
-  <audio id="bgm" src="assets/song.mp3" loop muted playsinline></audio>
 
   <h1>Vaibhav & Aarti</h1>
   <div id="intro"></div>
 
   <div id="countdown">
-    <div class="unit"><div id="days" class="num">0</div><div class="label">Days</div></div>
-    <div class="unit"><div id="hours" class="num">0</div><div class="label">Hrs</div></div>
-    <div class="unit"><div id="minutes" class="num">0</div><div class="label">Mins</div></div>
-    <div class="unit"><div id="seconds" class="num">0</div><div class="label">Secs</div></div>
+    <div class="countdown-unit">
+      <div id="days" class="countdown-number">0</div>
+      <div class="countdown-label">Days</div>
+    </div>
+    <div class="countdown-unit">
+      <div id="hours" class="countdown-number">0</div>
+      <div class="countdown-label">Hours</div>
+    </div>
+    <div class="countdown-unit">
+      <div id="minutes" class="countdown-number">0</div>
+      <div class="countdown-label">Minutes</div>
+    </div>
+    <div class="countdown-unit">
+      <div id="seconds" class="countdown-number">0</div>
+      <div class="countdown-label">Seconds</div>
+    </div>
   </div>
 
   <div class="buttons">
-    <a href="https://maps.app.goo.gl/FEnFQJp2pfHZmMyS7" target="_blank">📍 Venue</a>
-    <a href="assets/invite-card.jpeg" download>📄 Download Invite</a>
+    <a href="https://maps.app.goo.gl/FEnFQJp2pfHZmMyS7" target="_blank" class="btn">
+      <i class="fas fa-map-marker-alt"></i> Venue
+    </a>
+    <a href="assets/invite-card.jpeg" download class="btn">
+      <i class="fas fa-file-download"></i> Download Invite
+    </a>
   </div>
 
   <div class="message">
-    We can’t wait to celebrate our engagement with you!<br>
-    Your presence and blessings mean the world to us.<br><br>
+    We can’t wait to celebrate our engagement with you!<br />
+    Your presence and blessings will mean the world to us.<br /><br />
     💖 Join us as we begin our forever 💖
   </div>
 
   <div class="contact">
-    <a href="https://wa.me/917030888685" target="_blank" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
-    <a href="tel:+917030888685" class="call"><i class="fas fa-phone-alt"></i></a>
+    <a href="https://wa.me/917030888685" target="_blank" class="whatsapp" aria-label="WhatsApp">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+    <a href="tel:+917030888685" class="call" aria-label="Call">
+      <i class="fas fa-phone-alt"></i>
+    </a>
   </div>
 
-  <div id="flowers"></div>
+  <!-- Floating hearts and petals container -->
+  <div id="floating-container"></div>
 
+  <audio id="bg-music" src="assets/song.mp3" autoplay loop playsinline></audio>
+
+  <script src="https://unpkg.com/typeit@8.7.0/dist/index.umd.js"></script>
   <script>
-    // Popup on load
-    Swal.fire({
-      title: 'Save the Date 💍',
-      html: '<strong>Vaibhav & Aarti<br>17 August 2025</strong>',
-      background: '#ffe6f2',
-      confirmButtonColor: '#c7007f',
-      confirmButtonText: 'RSVP'
-    });
-
-    // Intro typewriter
+    // Typewriter intro text
     new TypeIt('#intro', {
-      strings: ['You are cordially invited to our engagement celebration.'],
-      speed: 45, waitUntilVisible:true
+      strings: ["We are delighted to invite you to our engagement ceremony."],
+      speed: 50,
+      waitUntilVisible: true
     }).go();
 
-    // Countdown logic
-    const target = new Date('2025-08-17T18:00:00').getTime();
-    function refresh() {
-      let now = Date.now(), diff = target - now;
-      if (diff < 0) {
-        clearInterval(interval); 
-        document.getElementById('countdown').innerHTML = '<div style="font-size:1.4rem;color:#c7007f;">It’s today! 🎉</div>';
+    // Countdown
+    const eventTime = new Date('2025-08-17T18:00:00').getTime();
+    const daysEl = document.getElementById('days');
+    const hoursEl = document.getElementById('hours');
+    const minutesEl = document.getElementById('minutes');
+    const secondsEl = document.getElementById('seconds');
+
+    function updateCountdown() {
+      const now = Date.now();
+      const diff = eventTime - now;
+
+      if (diff <= 0) {
+        clearInterval(countdownInterval);
+        document.getElementById('countdown').innerHTML = `<div style="font-size:1.8rem; color:#a1004a; font-family:'Great Vibes', cursive;">
+          Today is the day! 🎉</div>`;
         return;
       }
-      const d = Math.floor(diff/86400000), h = Math.floor((diff%86400000)/3600000),
-            m = Math.floor((diff%3600000)/60000), s = Math.floor((diff%60000)/1000);
-      document.getElementById('days').textContent = d;
-      document.getElementById('hours').textContent = h;
-      document.getElementById('minutes').textContent = m;
-      document.getElementById('seconds').textContent = s;
-    }
-    refresh(); const interval=setInterval(refresh,1000);
 
-    // Flower animation spawner
-    function spawnFlower() {
-      const f=document.createElement('div');
-      f.className='flower';
-      let size = 20 + Math.random()*20;
-      f.style.width=f.style.height=size+'px';
-      f.style.left= Math.random()*100+'vw';
-      f.style.animationDuration= (6 + Math.random()*4)+'s';
-      document.getElementById('flowers').appendChild(f);
-      f.addEventListener('animationend', () => f.remove());
-    }
-    setInterval(spawnFlower,350);
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-    // Heart animation spawner
-    function spawnHeart() {
-      const h=document.createElement('div');
-      h.className='heart';
-      h.textContent='❤️';
-      h.style.left= Math.random()*100+'vw';
-      h.style.animationDuration=(4+Math.random()*3)+'s';
-      document.body.appendChild(h);
-      h.addEventListener('animationend', () => h.remove());
+      daysEl.textContent = days;
+      hoursEl.textContent = hours.toString().padStart(2, '0');
+      minutesEl.textContent = minutes.toString().padStart(2, '0');
+      secondsEl.textContent = seconds.toString().padStart(2, '0');
     }
-    setInterval(spawnHeart,900);
+    updateCountdown();
+    const countdownInterval = setInterval(updateCountdown, 1000);
 
-    // Enable background music on interaction
-    const bgm = document.getElementById('bgm');
-    function enableMusic() {
-      bgm.muted = false;
-      bgm.play().catch(console.warn);
-      document.removeEventListener('click', enableMusic);
-      document.removeEventListener('touchstart', enableMusic);
+    // Floating hearts and petals animation
+    const floatingContainer = document.getElementById('floating-container');
+
+    function createFloating(type) {
+      const el = document.createElement('div');
+      el.classList.add('floating');
+      if (type === 'heart') {
+        el.classList.add('heart');
+        el.textContent = '❤️';
+      } else {
+        el.classList.add('petal');
+        el.textContent = '🌸';
+      }
+      el.style.left = Math.random() * 100 + 'vw';
+      el.style.fontSize = (12 + Math.random() * 20) + 'px';
+      el.style.animationDuration = (6 + Math.random() * 6) + 's';
+      el.style.animationDelay = '0s';
+      floatingContainer.appendChild(el);
+
+      el.addEventListener('animationend', () => el.remove());
     }
-    document.addEventListener('click', enableMusic);
-    document.addEventListener('touchstart', enableMusic);
+
+    setInterval(() => createFloating('heart'), 1200);
+    setInterval(() => createFloating('petal'), 1500);
+
+    // Optional: Unmute audio after user interaction (due to browser restrictions)
+    const audio = document.getElementById('bg-music');
+    document.body.addEventListener('click', () => {
+      if (audio.paused) {
+        audio.muted = false;
+        audio.play();
+      }
+    }, { once: true });
   </script>
-
 </body>
 </html>
