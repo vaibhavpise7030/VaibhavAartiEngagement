@@ -726,6 +726,7 @@
         <span class="and">&</span>
         <span>Aarti</span>
         <span>D/O Subhash & Sangita Pharande</span>
+        <br>
         <span>Invite you to celebrate our engagement!</span>
       </p>
       <div class="popup-close" onclick="closePopup()">Join Our Joy</div>
@@ -792,10 +793,10 @@
     }).go();
     // Typewriter message text
     new TypeIt('#message', {
-      strings: ["Join us to celebrate the start of our forever love. Your presence will make our day truly magical. 💍 Vaibhav, S/O Vitthal & Aruna Pise & Aarti, D/O Subhash & Sangita Pharande<br>We can’t wait to share this joy with you!"],
-      speed: 70,
-      waitUntilVisible: true
-    }).go();
+       strings: ["Join us to celebrate the start of our forever love.<br>Your presence will make our day truly magical.<br>💍<br>Vaibhav<br>S/O Vitthal & Aruna Pise<br>&<br>Aarti<br>D/O Subhash & Sangita Pharande<br><br>We can’t wait to share this joy with you!"],
+       speed: 70,
+       waitUntilVisible: true
+       }).go();
     // Countdown
     const eventTime = new Date('2025-08-17T11:00:00').getTime();
     const daysEl = document.getElementById('days');
@@ -838,7 +839,7 @@
         el.classList.add('alt');
       }
       if (type === 'heart') {
-        el.textContent = '💖';
+        el.textContent = '💕';
       }
       el.style.left = Math.random() * 100 + 'vw';
       el.style.fontSize = (type === 'sparkle' ? (8 + Math.random() * 8) : (16 + Math.random() * 12)) + 'px';
@@ -850,7 +851,7 @@
       particleContainer.appendChild(el);
       el.addEventListener('animationend', () => el.remove());
     }
-    setInterval(() => createParticle('heart'), 800);
+    setInterval(() => createParticle('heart'), 1500);
     setInterval(() => createParticle('sparkle'), 200);
     // Audio handling
     const audio = document.getElementById('bg-music');
@@ -870,9 +871,7 @@
     document.getElementById('welcome-popup').addEventListener('click', (e) => {
       if (e.target === e.currentTarget) closePopup();
     });
-    document.getElementById('welcome-popup').addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') closePopup();
-    });
+    
     // Focus popup for immediate keyboard interaction
     document.getElementById('welcome-popup').focus();
   </script>
