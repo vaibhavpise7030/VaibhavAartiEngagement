@@ -464,29 +464,13 @@
       color: #f9e4e2;
       animation: floatUp 5s infinite;
     }
-    .sparkle {
-      background: radial-gradient(circle, #d4af37 10%, transparent 70%);
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      animation: floatUpSparkle 2s infinite;
-      box-shadow: 0 0 15px #d4af37, 0 0 25px #d4af37;
-    }
-    .sparkle.alt {
-      background: radial-gradient(circle, #fff8f0 10%, transparent 70%);
-      animation: floatUpSparkle 1.5s infinite;
-      box-shadow: 0 0 15px #fff8f0, 0 0 25px #fff8f0;
-    }
+    
     @keyframes floatUp {
       0% { transform: translateY(0) rotate(0deg) scale(1); opacity: 1; }
       50% { transform: translateY(-100vh) rotate(180deg) scale(1.6); opacity: 0.7; }
       100% { transform: translateY(-200vh) rotate(360deg) scale(1); opacity: 0; }
     }
-    @keyframes floatUpSparkle {
-      0% { transform: translateY(0) translateX(0) scale(1); opacity: 1; }
-      50% { opacity: 0.6; transform: translateY(-100vh) translateX(calc(35px * var(--random-x))) scale(1.5); }
-      100% { transform: translateY(-200vh) translateX(calc(35px * var(--random-x))) scale(1); opacity: 0; }
-    }
+    
     /* Sparkle animation */
     @keyframes sparkle {
       0% { text-shadow: 0 0 25px rgba(212, 175, 55, 1), 0 0 35px rgba(255, 255, 255, 1); }
@@ -829,30 +813,22 @@
     updateCountdown();
     const countdownInterval = setInterval(updateCountdown, 1000);
     // Particle system (hearts and sparkles)
-    const particleContainer = document.getElementById('particle-container');
-    function createParticle(type) {
-      const el = document.createElement('div');
-      el.classList.add('particle', type);
-      if (type === 'heart' && Math.random() > 0.5) {
-        el.classList.add('alt');
-      } else if (type === 'sparkle' && Math.random() > 0.5) {
-        el.classList.add('alt');
-      }
-      if (type === 'heart') {
-        el.textContent = '💕';
-      }
-      el.style.left = Math.random() * 100 + 'vw';
-      el.style.fontSize = (type === 'sparkle' ? (8 + Math.random() * 8) : (16 + Math.random() * 12)) + 'px';
-      el.style.animationDuration = (type === 'sparkle' ? (1.5 + Math.random() * 1.5) : (4 + Math.random() * 2)) + 's';
-      el.style.animationDelay = (Math.random() * 0.5) + 's';
-      if (type === 'sparkle') {
-        el.style.setProperty('--random-x', Math.random() * 2 - 1);
-      }
-      particleContainer.appendChild(el);
-      el.addEventListener('animationend', () => el.remove());
-    }
-    setInterval(() => createParticle('heart'), 1500);
-    setInterval(() => createParticle('sparkle'), 200);
+  const particleContainer = document.getElementById('particle-container');
+function createParticle() {
+  const el = document.createElement('div');
+  el.classList.add('particle', 'heart');
+  if (Math.random() > 0.5) {
+    el.classList.add('alt');
+  }
+  el.textContent = '💞';
+  el.style.left = Math.random() * 100 + 'vw';
+  el.style.fontSize = (16 + Math.random() * 12) + 'px';
+  el.style.animationDuration = (4 + Math.random() * 2) + 's';
+  el.style.animationDelay = (Math.random() * 0.5) + 's';
+  particleContainer.appendChild(el);
+  el.addEventListener('animationend', () => el.remove());
+}
+setInterval(() => createParticle(), 1200);
     // Audio handling
     const audio = document.getElementById('bg-music');
     document.body.addEventListener('click', () => {
