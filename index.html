@@ -137,12 +137,36 @@
     }
     .subheader {
       font-family: 'Playfair Display', serif;
-      font-size: 1.6rem;
-      color: #2a1e1e;
+      color: #1a0f0f;
       margin-top: 4px;
       opacity: 0;
       animation: fadeInUp 1.5s 0.3s forwards;
-      line-height: 1.5;
+      line-height: 1.6;
+      background: linear-gradient(135deg, rgba(255, 246, 227, 0.95), rgba(255, 235, 205, 0.95));
+      padding: 10px 15px;
+      border: 2px dashed #d4af37;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+      max-width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .subheader:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+    }
+    .subheader .title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      text-shadow: 1px 1px 3px rgba(212, 175, 55, 0.3);
+      display: block;
+    }
+    .subheader .date {
+      font-size: 1.5rem;
+      font-style: italic;
+      text-shadow: 1px 1px 3px rgba(212, 175, 55, 0.3);
+      display: block;
     }
     /* Intro text */
     #intro {
@@ -170,6 +194,7 @@
       overflow: hidden;
       opacity: 0;
       animation: fadeInUp 1.5s 0.9s forwards, pulse 4s infinite ease-in-out;
+      z-index: 10; /* Ensure countdown stays above other elements */
     }
     #countdown::before {
       content: '';
@@ -322,7 +347,7 @@
     .floral-top {
       top: 0;
     }
-    .floral-bottom {
+    .floral-border.floral-bottom {
       bottom: 0;
       transform: rotate(180deg);
     }
@@ -392,6 +417,13 @@
         font-size: 2.8rem;
       }
       .subheader {
+        padding: 8px 12px;
+        border-radius: 12px;
+      }
+      .subheader .title {
+        font-size: 1.6rem;
+      }
+      .subheader .date {
         font-size: 1.4rem;
       }
       #intro {
@@ -402,6 +434,12 @@
         gap: 3px;
         padding: 8px;
         border-radius: 16px;
+        margin-bottom: 10px;
+        z-index: 10; /* Ensure visibility */
+        min-height: 80px; /* Prevent collapse */
+        width: 100%; /* Full width for visibility */
+        max-width: 90%; /* Constrain width */
+        display: grid; /* Maintain grid layout */
       }
       .countdown-number {
         font-size: 1.8rem;
@@ -478,8 +516,14 @@
         font-size: 2.2rem;
       }
       .subheader {
+        padding: 6px 10px;
+        border-radius: 10px;
+      }
+      .subheader .title {
+        font-size: 1.4rem;
+      }
+      .subheader .date {
         font-size: 1.2rem;
-        margin-top: 3px;
       }
       #intro {
         font-size: 1.1rem;
@@ -491,6 +535,12 @@
         padding: 6px;
         border-radius: 14px;
         border: 1px solid #bc8f8f;
+        margin-bottom: 8px;
+        z-index: 10; /* Ensure visibility */
+        min-height: 70px; /* Prevent collapse */
+        width: 100%; /* Full width for visibility */
+        max-width: 95%; /* Constrain width */
+        display: grid; /* Maintain grid layout */
       }
       .countdown-unit {
         padding: 4px;
@@ -585,6 +635,7 @@
         <span class="and">&</span>
         <span>Aarti</span>
         <span>D/O Subhash & Sangita Pharande</span>
+        <br>
         <span>Invite you to celebrate our engagement!</span>
       </p>
       <div class="popup-close" onclick="closePopup()">Join Our Joy</div>
@@ -595,7 +646,10 @@
   <div class="floral-border floral-bottom"></div>
   <header>
     <h1>Vaibhav & Aarti</h1>
-    <div class="subheader">An Engagement to Remember</div>
+    <div class="subheader">
+      <span class="title">An Engagement to Remember</span>
+      <span class="date">17 August 2025, 11 AM onwards</span>
+    </div>
   </header>
   <div id="intro"></div>
   <div id="countdown">
@@ -653,7 +707,7 @@
       waitUntilVisible: true
     }).go();
     // Countdown
-    const eventTime = new Date('2025-08-17T18:00:00').getTime();
+    const eventTime = new Date('2025-08-17T11:00:00').getTime();
     const daysEl = document.getElementById('days');
     const hoursEl = document.getElementById('hours');
     const minutesEl = document.getElementById('minutes');
@@ -697,8 +751,8 @@
       floatingContainer.appendChild(el);
       el.addEventListener('animationend', () => el.remove());
     }
-    setInterval(() => createFloating('heart'), 1200);
-    setInterval(() => createFloating('fire-shower'), 1000);
+    setInterval(() => createFloating('heart'), 2000);
+    setInterval(() => createFloating('fire-shower'), 2000);
     // Audio handling
     const audio = document.getElementById('bg-music');
     document.body.addEventListener('click', () => {
