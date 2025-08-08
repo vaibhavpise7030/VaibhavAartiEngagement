@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Vaibhav & Aarti — Engagement Invitation</title>
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&family=Cormorant:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Great+Vibes&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
   <!-- FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
   <style>
@@ -17,270 +17,198 @@
     }
     body {
       min-height: 100vh;
-      font-family: 'Cormorant', serif;
-      background: linear-gradient(135deg, #fdf6e3 0%, #f4e0b9 100%);
-      color: #2b1a1a;
+      font-family: 'Cormorant Garamond', serif;
+      background: linear-gradient(135deg, #f5e6d3 0%, #f0d7b8 100%);
+      color: #2a1e1e;
       display: flex;
       flex-direction: column;
       align-items: center;
       padding: 15px;
       overflow-x: hidden;
       position: relative;
-      z-index: 1;
-    }
-    /* Vignette and glow overlay */
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle at center, transparent 55%, rgba(212, 175, 55, 0.7) 100%);
-      box-shadow: inset 0 0 140px rgba(212, 175, 55, 0.6);
-      pointer-events: none;
-      z-index: -1;
-      animation: glowPulse 9s infinite ease-in-out;
-    }
-    @keyframes glowPulse {
-      0% { opacity: 0.6; }
-      50% { opacity: 1; }
-      100% { opacity: 0.6; }
-    }
-    /* Romantic background */
-    .parallax-bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-     /* background: url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&q=80') center/cover no-repeat; */
-      opacity: 0.45;
-      z-index: -2;
-      transform: translateZ(0);
     }
     /* Welcome popup */
     .popup {
       position: fixed;
       top: 0;
       left: 0;
-      width: 100%;
-      height: 100%;
+      right: 0;
+      bottom: 0;
       background: rgba(43, 26, 26, 0.75);
       display: flex;
       justify-content: center;
       align-items: center;
       z-index: 100;
-      opacity: 1;
-	  animation: popupBackgroundFade 0.4s ease-out forwards;
-
     }
     .popup-content {
       background: rgba(255, 246, 227, 0.97);
-      padding: 35px;
-      border-radius: 30px;
-      border: 5px solid #d4af37;
-      box-shadow: 0 0 35px rgba(212, 175, 55, 0.8);
-      max-width: 85%;
-      width: 550px;
-      max-height: 80vh;
+      padding: 30px;
+      border-radius: 25px;
+      border: 3px solid #d4af37;
+      box-shadow: 0 0 25px rgba(212, 175, 55, 0.6);
+      max-width: 80%;
+      width: 500px;
+      max-height: 75vh;
       overflow-y: auto;
       text-align: center;
       position: relative;
-      margin: auto;
-      opacity: 1;
-      will-change: opacity;
-		transform: none;
-		animation: none;
     }
     .popup-content::before {
       content: '💞';
       position: absolute;
-      top: -25px;
+      top: -20px;
       left: 50%;
-      transform: translateX(-50%);
-      font-size: 2.2rem;
+      margin-left: -1rem;
+      font-size: 2rem;
       color: #d4af37;
     }
     .popup-content h2 {
       font-family: 'Great Vibes', cursive;
-      font-size: 2.8rem;
+      font-size: 2.5rem;
       color: #d4af37;
-      margin-bottom: 15px;
-      text-shadow: 0 0 12px rgba(212, 175, 55, 0.6);
+      margin-bottom: 10px;
+      text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
     }
     .popup-content q {
       font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
-      color: #2b1a1a;
-      line-height: 1.8;
+      font-size: 1.3rem;
+      color: #2a1e1e;
+      line-height: 1.6;
       display: block;
-      margin-bottom: 15px;
+      margin-bottom: 10px;
     }
     .popup-content p {
       font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
-      color: #2b1a1a;
-      line-height: 1.8;
-      margin-bottom: 25px;
+      font-size: 1.3rem;
+      color: #2a1e1e;
+      line-height: 1.6;
+      margin-bottom: 20px;
     }
     .popup-content p span {
       display: block;
-      text-align: center;
     }
     .popup-content p .and {
-      font-size: 2rem;
+      font-size: 1.8rem;
       color: #d4af37;
       font-family: 'Great Vibes', cursive;
       margin: 5px 0;
     }
     .popup-close {
-      background: linear-gradient(45deg, #d4af37, #8b6f47);
+      background: linear-gradient(45deg, #8b6f47, #d4af37);
       color: #fff;
       font-family: 'Playfair Display', serif;
-      font-size: 1.3rem;
-      padding: 10px 25px;
-      border-radius: 35px;
+      font-size: 1.1rem;
+      padding: 8px 20px;
+      border-radius: 30px;
       text-decoration: none;
       cursor: pointer;
-      box-shadow: 0 4px 12px rgba(212, 175, 55, 0.6);
-      transition: background 0.3s, transform 0.3s;
+      box-shadow: 0 3px 12px rgba(212, 175, 55, 0.5);
+      display: inline-block;
+      transition: background 0.3s ease, transform 0.3s ease;
     }
     .popup-close:hover {
-      background: linear-gradient(45deg, #b8860b, #5c4033);
+      background: linear-gradient(45deg, #d4af37, #b8860b);
       transform: scale(1.05);
     }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    @keyframes fadeOut {
-      from { opacity: 1; }
-      to { opacity: 0; }
+    /* Couple with ring background */
+    .parallax-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.2;
+      z-index: -1;
+      transform: translateZ(0);
     }
     /* Header */
     header {
       text-align: center;
-      margin-bottom: 20px;
+      margin-bottom: 12px;
       position: relative;
-      z-index: 2;
     }
     h1 {
       font-family: 'Great Vibes', cursive;
-      font-size: 5rem;
-      color: #d4af37;
-      text-shadow: 0 0 25px rgba(212, 175, 55, 1), 0 0 35px rgba(255, 255, 255, 1);
+      font-size: 3.5rem;
+      color: #8b6f47;
+      text-shadow: 2px 2px 8px rgba(255, 255, 255, 0.6), 0 0 10px rgba(212, 175, 55, 0.5);
       opacity: 0;
-      animation: fadeInUp 1.5s forwards, sparkle 2s infinite;
+      animation: fadeInUp 1.5s forwards, sparkle 3s infinite;
     }
     .subheader {
       font-family: 'Playfair Display', serif;
-      font-size: 2.2rem;
-      color: #2b1a1a;
-      margin-top: 12px;
-      padding: 12px 30px;
-      background: rgba(255, 255, 255, 0.9);
-      border: 4px double #d4af37;
-      border-radius: 45px;
-      box-shadow: 0 0 15px rgba(212, 175, 55, 0.7);
+      font-size: 1.6rem;
+      color: #2a1e1e;
+      margin-top: 4px;
       opacity: 0;
       animation: fadeInUp 1.5s 0.3s forwards;
-    }
-    /* Event details */
-    #event-details {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
-      color: #2b1a1a;
-      text-align: center;
-      margin-bottom: 20px;
-      padding: 10px 20px;
-      background: rgba(255, 246, 227, 0.97);
-      border: 3px solid #d4af37;
-      border-radius: 25px;
-      box-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
-      opacity: 0;
-      animation: fadeInUp 1.5s 0.6s forwards;
-      max-width: 80%;
+      line-height: 1.5;
     }
     /* Intro text */
     #intro {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
-      max-width: 80%;
+      font-size: 1.4rem;
+      max-width: 90%;
       text-align: center;
-      margin-bottom: 20px;
-      line-height: 2;
-      color: #2b1a1a;
+      margin-bottom: 12px;
+      line-height: 1.7;
+      color: #2a1e1e;
       opacity: 0;
-      animation: fadeInUp 1.5s 0.9s forwards;
+      animation: fadeInUp 1.5s 0.6s forwards;
     }
-    /* Countdown container */
+    /* Enhanced countdown container */
     #countdown {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 8px;
+      gap: 4px;
       background: linear-gradient(135deg, #fff8f0 0%, #f9e4e2 100%);
-      padding: 20px;
-      border-radius: 25px;
-      box-shadow: 0 8px 20px rgba(212, 175, 55, 0.6);
-      margin-bottom: 20px;
-      border: 4px solid #d4af37;
+      padding: 10px;
+      border-radius: 18px;
+      box-shadow: 0 4px 10px rgba(188, 143, 143, 0.3);
+      margin-bottom: 12px;
+      border: 1px solid #bc8f8f;
       position: relative;
-      z-index: 2;
-      width: 100%;
-      max-width: 600px;
+      overflow: hidden;
+      opacity: 0;
+      animation: fadeInUp 1.5s 0.9s forwards, pulse 4s infinite ease-in-out;
     }
     #countdown::before {
       content: '';
       position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(212, 175, 55, 0.5) 0%, transparent 70%);
-      opacity: 0.6;
-      animation: glitter 4s infinite ease-in-out;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at center, rgba(188, 143, 143, 0.2), transparent 70%);
+      opacity: 0.4;
       z-index: -1;
-    }
-    @keyframes glitter {
-      0% { transform: rotate(0deg); opacity: 0.6; }
-      50% { transform: rotate(180deg); opacity: 0.8; }
-      100% { transform: rotate(360deg); opacity: 0.6; }
     }
     .countdown-unit {
       text-align: center;
       font-weight: 700;
-      padding: 10px;
+      cursor: default;
+      transition: transform 0.3s ease, background 0.3s ease;
+      padding: 5px;
       background: #fffaf0;
-      border-radius: 15px;
-      box-shadow: 0 4px 10px rgba(188, 143, 143, 0.5), inset 0 0 6px rgba(212, 175, 55, 0.4);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(188, 143, 143, 0.2);
     }
     .countdown-unit:hover {
-      transform: scale(1.1) rotate(2deg);
-      box-shadow: 0 8px 20px rgba(212, 175, 55, 0.8);
+      transform: scale(1.05);
+      background: #f9e4e2;
     }
     .countdown-number {
       font-family: 'Playfair Display', serif;
-      font-size: 2.4rem;
+      font-size: 2rem;
       color: #8b475d;
-      text-shadow: 1px 1px 5px rgba(188, 143, 143, 0.7);
+      text-shadow: 1px 1px 3px rgba(188, 143, 143, 0.4);
       line-height: 1;
     }
     .countdown-label {
-      font-size: 1rem;
+      font-size: 0.8rem;
       text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-top: 5px;
+      letter-spacing: 1.2px;
+      margin-top: 2px;
       color: #8b475d;
-    }
-    #countdown-message {
-      grid-column: 1 / -1;
-      text-align: center;
-      font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
-      color: #8b475d;
-      padding: 10px;
     }
     /* Buttons container */
     .buttons {
@@ -293,120 +221,77 @@
       animation: fadeInUp 1.5s 1.2s forwards;
     }
     .btn {
-      background: linear-gradient(45deg, #d4af37, #8b6f47);
+      background: linear-gradient(45deg, #8b6f47, #d4af37);
       color: #fff;
       font-family: 'Playfair Display', serif;
-      font-size: 1.4rem;
-      padding: 12px 35px;
-      border-radius: 50px;
+      font-size: 1.2rem;
+      padding: 10px 22px;
+      border-radius: 35px;
       text-decoration: none;
-      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.7);
+      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.6), 0 0 20px rgba(212, 175, 55, 0.4);
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 8px;
       transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-      min-width: 200px;
-      position: relative;
-      overflow: hidden;
-    }
-    .btn::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.7), transparent);
-      transition: 0.7s;
-    }
-    .btn:hover::after {
-      left: 100%;
+      min-width: 140px;
+      animation: btnPulse 2s infinite ease-in-out;
     }
     .btn:hover {
-      background: linear-gradient(45deg, #b8860b, #5c4033);
-      transform: translateY(-4px) scale(1.05);
-      box-shadow: 0 10px 25px rgba(212, 175, 55, 0.9);
+      background: linear-gradient(45deg, #d4af37, #b8860b);
+      transform: translateY(-3px) scale(1.1);
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.8), 0 0 25px rgba(212, 175, 55, 0.6);
     }
     .btn i {
-      font-size: 1.4rem;
+      font-size: 1.1rem;
     }
-    /* Message with parchment style */
+    /* Message with highlighted border */
     .message {
       font-family: 'Playfair Display', serif;
-      font-size: 1.6rem;
+      font-size: 1.4rem;
       max-width: 90%;
       text-align: center;
-      color: #2b1a1a;
-      margin-bottom: 20px;
-      line-height: 1.8;
-      background: rgba(255, 246, 227, 0.97);
-      padding: 25px;
-      border-radius: 25px;
-      border: 4px double #d4af37;
-      box-shadow: 0 0 25px rgba(212, 175, 55, 0.8), inset 0 0 15px rgba(212, 175, 55, 0.5);
+      color: #2a1e1e;
+      margin-bottom: 12px;
+      line-height: 1.7;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 10px;
+      border-radius: 12px;
+      border: 2px solid #d4af37;
+      box-shadow: 0 0 12px rgba(212, 175, 55, 0.5);
       opacity: 0;
       animation: fadeInUp 1.5s 1.5s forwards;
-      position: relative;
-      z-index: 2;
-    }
-    .message::before, .message::after {
-      content: '🌸';
-      position: absolute;
-      font-size: 1.6rem;
-      color: #d4af37;
-    }
-    .message::before {
-      top: -15px;
-      left: -15px;
-    }
-    .message::after {
-      bottom: -15px;
-      right: -15px;
     }
     /* Contact section */
     .contact {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 25px;
-      margin-bottom: 20px;
+      gap: 12px;
+      margin-bottom: 12px;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 15px;
+      border-radius: 12px;
+      border: 2px solid #d4af37;
+      box-shadow: 0 0 12px rgba(212, 175, 55, 0.5);
       opacity: 0;
       animation: fadeInUp 1.5s 1.8s forwards;
-      position: relative;
-      background: rgba(255, 255, 255, 0.25);
-      padding: 15px 30px;
-      border-radius: 50px;
-      box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
-      z-index: 2;
     }
     .contact-text {
-      font-family: 'Great Vibes', cursive;
-      font-size: 2rem;
-      color: #2b1a1a;
-      line-height: 2;
-      position: relative;
-      padding-bottom: 10px;
-    }
-    .contact-text::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 3px;
-      background: linear-gradient(90deg, #d4af37, #8b6f47);
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: #2a1e1e;
+      line-height: 1.7;
     }
     .contact-icons {
       display: flex;
-      gap: 30px;
+      gap: 20px;
       justify-content: center;
     }
     .contact a {
-      font-size: 2.8rem;
-      color: #d4af37;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      animation: contactPulse 1.5s infinite ease-in-out;
+      font-size: 2.2rem;
+      color: #8b6f47;
+      transition: transform 0.3s ease, color 0.3s ease;
+      animation: contactBounce 1.5s infinite ease-in-out;
     }
     .contact a.whatsapp {
       color: #25d366;
@@ -415,142 +300,115 @@
       color: #007bff;
     }
     .contact a:hover {
-      transform: scale(1.4);
-      box-shadow: 0 0 25px rgba(212, 175, 55, 1);
+      transform: scale(1.2);
+      color: #d4af37;
     }
     /* Contact animation */
-    @keyframes contactPulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.2); }
-      100% { transform: scale(1); }
+    @keyframes contactBounce {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+      100% { transform: translateY(0); }
     }
-    /* Rose vines */
-    .rose-vine {
+    /* Floral borders */
+    .floral-border {
       position: absolute;
       width: 100%;
-      height: 70px;
+      height: 40px;
       background: url('https://www.transparenttextures.com/patterns/floral-pattern.png') repeat-x;
-      opacity: 0.7;
+      opacity: 0.3;
       z-index: 1;
-      animation: sway 5s infinite ease-in-out;
+      animation: sway 10s infinite ease-in-out;
     }
-    .vine-top {
+    .floral-top {
       top: 0;
     }
-    .vine-bottom {
+    .floral-bottom {
       bottom: 0;
       transform: rotate(180deg);
     }
-    @keyframes sway {
-      0% { background-position: 0 0; }
-      50% { background-position: 200px 0; }
-      100% { background-position: 0 0; }
-    }
-    /* Particle system */
-    .particle {
+    /* Floating elements (hearts and sparkles only) */
+    .floating {
       position: fixed;
       pointer-events: none;
       user-select: none;
       z-index: 0;
+      font-size: 12px;
       animation-timing-function: ease-in-out;
     }
     .heart {
       color: #d4af37;
-      animation: floatUp 3s infinite;
+      animation: floatUp 8s infinite;
     }
-    .heart.alt {
-      color: #f9e4e2;
-      animation: floatUp 4s infinite;
-    }
-    .sparkle {
+    .fire-shower {
       background: radial-gradient(circle, #d4af37 10%, transparent 70%);
-      width: 10px;
-      height: 10px;
+      width: 5px;
+      height: 5px;
       border-radius: 50%;
-      animation: floatUpSparkle 2s infinite;
-      box-shadow: 0 0 15px #d4af37, 0 0 25px #d4af37;
-    }
-    .sparkle.alt {
-      background: radial-gradient(circle, #fff8f0 10%, transparent 70%);
-      animation: floatUpSparkle 1.5s infinite;
-      box-shadow: 0 0 15px #fff8f0, 0 0 25px #fff8f0;
+      animation: floatUpFire 6s infinite;
+      box-shadow: 0 0 6px #d4af37, 0 0 12px #d4af37;
     }
     @keyframes floatUp {
-      0% { transform: translateY(0) rotate(0deg) scale(1); opacity: 1; }
-      50% { transform: translateY(-100vh) rotate(180deg) scale(1.6); opacity: 0.7; }
-      100% { transform: translateY(-200vh) rotate(360deg) scale(1); opacity: 0; }
+      0% { transform: translateY(0) rotate(0deg) scale(1); opacity: 0.8; }
+      50% { transform: translateY(-60vh) rotate(180deg) scale(1.2); opacity: 0.9; }
+      100% { transform: translateY(-120vh) rotate(360deg) scale(1); opacity: 0; }
     }
-    @keyframes floatUpSparkle {
+    @keyframes floatUpFire {
       0% { transform: translateY(0) translateX(0) scale(1); opacity: 1; }
-      50% { opacity: 0.6; transform: translateY(-100vh) translateX(calc(35px * var(--random-x))) scale(1.5); }
-      100% { transform: translateY(-200vh) translateX(calc(35px * var(--random-x))) scale(1); opacity: 0; }
+      50% { opacity: 0.7; transform: translateY(-60vh) translateX(calc(15px * var(--random-x))) scale(1.1); }
+      100% { transform: translateY(-120vh) translateX(calc(15px * var(--random-x))) scale(1); opacity: 0; }
     }
-    /* Sparkle animation */
+    /* Pulse animation for countdown */
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+      100% { transform: scale(1); }
+    }
+    /* Button pulse animation */
+    @keyframes btnPulse {
+      0% { transform: scale(1); box-shadow: 0 4px 15px rgba(212, 175, 55, 0.6), 0 0 20px rgba(212, 175, 55, 0.4); }
+      50% { transform: scale(1.03); box-shadow: 0 6px 20px rgba(212, 175, 55, 0.8), 0 0 25px rgba(212, 175, 55, 0.6); }
+      100% { transform: scale(1); box-shadow: 0 4px 15px rgba(212, 175, 55, 0.6), 0 0 20px rgba(212, 175, 55, 0.4); }
+    }
+    /* Sway animation for floral borders */
+    @keyframes sway {
+      0% { background-position: 0 0; }
+      50% { background-position: 80px 0; }
+      100% { background-position: 0 0; }
+    }
+    /* Sparkle animation for header */
     @keyframes sparkle {
-      0% { text-shadow: 0 0 25px rgba(212, 175, 55, 1), 0 0 35px rgba(255, 255, 255, 1); }
-      50% { text-shadow: 0 0 30px rgba(212, 175, 55, 1), 0 0 45px rgba(255, 255, 255, 1); }
-      100% { text-shadow: 0 0 25px rgba(212, 175, 55, 1), 0 0 35px rgba(255, 255, 255, 1); }
+      0% { text-shadow: 2px 2px 8px rgba(255, 255, 255, 0.6), 0 0 10px rgba(212, 175, 55, 0.5); }
+      50% { text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.8), 0 0 12px rgba(212, 175, 55, 0.7); }
+      100% { text-shadow: 2px 2px 8px rgba(255, 255, 255, 0.6), 0 0 10px rgba(212, 175, 55, 0.5); }
     }
-	
-	/* Updated keyframes */
-@keyframes popupBackgroundFade {
-  from { background: rgba(43, 26, 26, 0); }
-  to { background: rgba(43, 26, 26, 0.75); }
-}
-
-@keyframes popupSlideFade {
-  to {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
-}
-	
     /* FadeInUp animation */
     @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
+      from { opacity: 0; transform: translateY(12px); }
       to { opacity: 1; transform: translateY(0); }
     }
     /* Responsive */
     @media (max-width: 768px) {
-      body {
-        padding: 10px;
-      }
       h1 {
-        font-size: 3.5rem;
+        font-size: 2.8rem;
       }
       .subheader {
-        font-size: 1.8rem;
-        padding: 8px 20px;
-      }
-      #event-details {
-        font-size: 1.5rem;
-        padding: 8px 15px;
-        margin-bottom: 15px;
+        font-size: 1.4rem;
       }
       #intro {
-        font-size: 1.5rem;
-        margin-bottom: 15px;
+        font-size: 1.3rem;
+        margin-bottom: 10px;
       }
       #countdown {
-        gap: 6px;
-        padding: 15px;
-        border-radius: 20px;
-        border: 3px solid #d4af37;
-        max-width: 100%;
-      }
-      .countdown-unit {
+        gap: 3px;
         padding: 8px;
+        border-radius: 16px;
       }
       .countdown-number {
-        font-size: 2rem;
+        font-size: 1.8rem;
       }
       .countdown-label {
-        font-size: 0.9rem;
-        letter-spacing: 1.5px;
-      }
-      #countdown-message {
-        font-size: 1.3rem;
-        padding: 8px;
+        font-size: 0.7rem;
+        letter-spacing: 1px;
       }
       .buttons {
         flex-direction: column;
@@ -560,42 +418,39 @@
       .btn {
         width: 100%;
         justify-content: center;
-        font-size: 1.3rem;
-        padding: 10px 30px;
+        font-size: 1.1rem;
+        padding: 8px 18px;
+        text-align: center;
         min-width: 0;
       }
       .btn i {
-        font-size: 1.3rem;
+        font-size: 1rem;
       }
       .message {
-        font-size: 1.4rem;
-        margin-bottom: 15px;
-        padding: 20px;
-        border-radius: 20px;
-        max-width: 95%;
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+        padding: 8px;
       }
       .contact {
-        gap: 20px;
-        margin-bottom: 15px;
-        padding: 12px 25px;
+        gap: 8px;
+        margin-bottom: 10px;
+        padding: 12px;
       }
       .contact-text {
-        font-size: 1.8rem;
+        font-size: 1.3rem;
       }
       .contact a {
-        font-size: 2.6rem;
-      }
-      .rose-vine {
-        height: 60px;
+        font-size: 2rem;
       }
       .popup-content {
         padding: 20px;
         width: 85%;
-        max-height: 75vh;
+        max-height: 70vh;
       }
       .popup-content::before {
-        font-size: 2rem;
-        top: -20px;
+        font-size: 1.8rem;
+        top: -18px;
+        margin-left: -0.9rem;
       }
       .popup-content h2 {
         font-size: 2rem;
@@ -609,21 +464,8 @@
       }
       .popup-close {
         font-size: 1rem;
-        padding: 8px 20px;
+        padding: 7px 18px;
       }
-	  
-	  .popup-content {
-			opacity: 0;
-			transform: translateY(30px) scale(0.95);
-			animation: popupSlideMobile 0.4s ease-out forwards;
-		}
-		
-		@keyframes popupSlideMobile {
-    to {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
-  }
     }
     @media (max-width: 480px) {
       body {
@@ -633,94 +475,86 @@
         justify-content: space-between;
       }
       h1 {
-        font-size: 2.8rem;
+        font-size: 2.2rem;
       }
       .subheader {
-        font-size: 1.5rem;
-        padding: 6px 15px;
-        margin-top: 8px;
-      }
-      #event-details {
-        font-size: 1.3rem;
-        padding: 6px 12px;
-        margin-bottom: 12px;
+        font-size: 1.2rem;
+        margin-top: 3px;
       }
       #intro {
-        font-size: 1.3rem;
-        margin-bottom: 12px;
+        font-size: 1.1rem;
+        margin-bottom: 8px;
         line-height: 1.6;
       }
       #countdown {
-        gap: 4px;
-        padding: 12px;
-        border-radius: 15px;
-        border: 2px solid #d4af37;
-        max-width: 100%;
+        gap: 2px;
+        padding: 6px;
+        border-radius: 14px;
+        border: 1px solid #bc8f8f;
       }
       .countdown-unit {
-        padding: 6px;
-        border-radius: 10px;
+        padding: 4px;
+        border-radius: 6px;
       }
       .countdown-number {
-        font-size: 1.6rem;
+        font-size: 1.4rem;
+        font-weight: 700;
       }
       .countdown-label {
-        font-size: 0.8rem;
-        letter-spacing: 1px;
-        margin-top: 4px;
-      }
-      #countdown-message {
-        font-size: 1.1rem;
-        padding: 6px;
+        font-size: 0.6rem;
+        letter-spacing: 0.8px;
+        margin-top: 1px;
       }
       .buttons {
         gap: 15px;
         margin-bottom: 12px;
       }
       .btn {
-        padding: 8px 25px;
-        font-size: 1.2rem;
-        max-width: 100%;
+        padding: 7px 14px;
+        font-size: 1rem;
+        min-width: 0;
+        max-width: 90%;
+        text-align: center;
+        justify-content: center;
       }
       .btn i {
-        font-size: 1.2rem;
-        margin-right: 10px;
+        font-size: 0.9rem;
+        margin-right: 5px;
       }
       .message {
-        font-size: 1.2rem;
-        padding: 15px;
-        border-radius: 15px;
+        font-size: 1.1rem;
+        padding: 8px;
+        border-radius: 10px;
         margin-bottom: 12px;
-        line-height: 1.6;
-      }
-      .message::before, .message::after {
-        font-size: 1.4rem;
       }
       .contact {
-        gap: 15px;
+        flex-direction: column;
+        gap: 10px;
         margin-bottom: 12px;
-        padding: 10px 20px;
+        padding: 10px;
       }
       .contact-text {
-        font-size: 1.6rem;
+        font-size: 1.1rem;
+        line-height: 1.6;
       }
       .contact-icons {
-        gap: 25px;
+        gap: 15px;
       }
       .contact a {
-        font-size: 2.4rem;
+        font-size: 1.8rem;
       }
-      .rose-vine {
-        height: 50px;
+      .floral-border {
+        height: 30px;
       }
       .popup-content {
         padding: 15px;
         width: 90%;
-        max-height: 70vh;
+        max-height: 65vh;
       }
       .popup-content::before {
-        font-size: 1.8rem;
-        top: -18px;
+        font-size: 1.6rem;
+        top: -16px;
+        margin-left: -0.8rem;
       }
       .popup-content h2 {
         font-size: 1.6rem;
@@ -734,7 +568,7 @@
       }
       .popup-close {
         font-size: 0.9rem;
-        padding: 7px 15px;
+        padding: 6px 15px;
       }
     }
   </style>
@@ -756,15 +590,13 @@
       <div class="popup-close" onclick="closePopup()">Join Our Joy</div>
     </div>
   </div>
-  <!-- Main content -->
   <div class="parallax-bg"></div>
-  <div class="rose-vine vine-top"></div>
-  <div class="rose-vine vine-bottom"></div>
+  <div class="floral-border floral-top"></div>
+  <div class="floral-border floral-bottom"></div>
   <header>
     <h1>Vaibhav & Aarti</h1>
-    <div class="subheader">A JOURNEY OF LOVE BEGINS WITH A PROMISE...</div>
+    <div class="subheader">An Engagement to Remember</div>
   </header>
-  <div id="event-details">Engagement: August 17, 2025, 11:00 AM onwards</div>
   <div id="intro"></div>
   <div id="countdown">
     <div class="countdown-unit">
@@ -783,7 +615,6 @@
       <div id="seconds" class="countdown-number">0</div>
       <div class="countdown-label">Seconds</div>
     </div>
-    <div id="countdown-message" style="display: none;"></div>
   </div>
   <div class="buttons">
     <a href="https://maps.app.goo.gl/T7YadotJwYTETd5DA?g_st=ipc" target="_blank" class="btn">
@@ -795,7 +626,7 @@
   </div>
   <div id="message" class="message"></div>
   <div class="contact">
-    <div class="contact-text">Connect with Us</div>
+    <div class="contact-text">Contact Us</div>
     <div class="contact-icons">
       <a href="https://wa.me/917030888685" target="_blank" class="whatsapp" aria-label="WhatsApp">
         <i class="fab fa-whatsapp"></i>
@@ -805,40 +636,35 @@
       </a>
     </div>
   </div>
-  <div id="particle-container"></div>
+  <div id="floating-container"></div>
   <audio id="bg-music" src="assets/song.mp3" autoplay loop playsinline></audio>
   <script src="https://unpkg.com/typeit@8.7.0/dist/index.umd.js"></script>
   <script>
     // Typewriter intro text
     new TypeIt('#intro', {
-      strings: ["You are lovingly invited to our engagement ceremony."],
-      speed: 70,
+      strings: ["You are cordially invited to our engagement ceremony."],
+      speed: 40,
       waitUntilVisible: true
     }).go();
     // Typewriter message text
     new TypeIt('#message', {
-      strings: ["Join us to celebrate the start of our forever love. Your presence will make our day truly magical. 💍 Vaibhav, S/O Vitthal & Aruna Pise & Aarti, D/O Subhash & Sangita Pharande<br>We can’t wait to share this joy with you!"],
+      strings: ["Join us to celebrate the start of our forever love.<br>Your presence will make our day truly magical.<br>💍<br>Vaibhav<br>S/O Vitthal & Aruna Pise<br>&<br>Aarti<br>D/O Subhash & Sangita Pharande<br><br>We can’t wait to share this joy with you!"],
       speed: 70,
       waitUntilVisible: true
     }).go();
     // Countdown
-    const eventTime = new Date('2025-08-17T11:00:00').getTime();
+    const eventTime = new Date('2025-08-17T18:00:00').getTime();
     const daysEl = document.getElementById('days');
     const hoursEl = document.getElementById('hours');
     const minutesEl = document.getElementById('minutes');
     const secondsEl = document.getElementById('seconds');
-    const countdownMessageEl = document.getElementById('countdown-message');
     function updateCountdown() {
       const now = Date.now();
       const diff = eventTime - now;
       if (diff <= 0) {
         clearInterval(countdownInterval);
-        daysEl.parentElement.style.display = 'none';
-        hoursEl.parentElement.style.display = 'none';
-        minutesEl.parentElement.style.display = 'none';
-        secondsEl.parentElement.style.display = 'none';
-        countdownMessageEl.style.display = 'block';
-        countdownMessageEl.textContent = 'Our forever begins now! 💍';
+        document.getElementById('countdown').innerHTML = `<div style="font-size:1.3rem; color:#8b475d; font-family:'Playfair Display', serif;">
+          The moment has arrived! 💍</div>`;
         return;
       }
       const days = Math.floor(diff / (1000 * 60 * 60 * 24));
@@ -852,31 +678,27 @@
     }
     updateCountdown();
     const countdownInterval = setInterval(updateCountdown, 1000);
-    // Particle system (hearts and sparkles)
-    const particleContainer = document.getElementById('particle-container');
-    function createParticle(type) {
+    // Floating elements (hearts and sparkles only)
+    const floatingContainer = document.getElementById('floating-container');
+    function createFloating(type) {
       const el = document.createElement('div');
-      el.classList.add('particle', type);
-      if (type === 'heart' && Math.random() > 0.5) {
-        el.classList.add('alt');
-      } else if (type === 'sparkle' && Math.random() > 0.5) {
-        el.classList.add('alt');
-      }
+      el.classList.add('floating');
       if (type === 'heart') {
+        el.classList.add('heart');
         el.textContent = '💖';
-      }
-      el.style.left = Math.random() * 100 + 'vw';
-      el.style.fontSize = (type === 'sparkle' ? (8 + Math.random() * 8) : (16 + Math.random() * 12)) + 'px';
-      el.style.animationDuration = (type === 'sparkle' ? (1.5 + Math.random() * 1.5) : (2 + Math.random() * 2)) + 's';
-      el.style.animationDelay = (Math.random() * 0.5) + 's';
-      if (type === 'sparkle') {
+      } else if (type === 'fire-shower') {
+        el.classList.add('fire-shower');
         el.style.setProperty('--random-x', Math.random() * 2 - 1);
       }
-      particleContainer.appendChild(el);
+      el.style.left = Math.random() * 100 + 'vw';
+      el.style.fontSize = (type === 'fire-shower' ? (4 + Math.random() * 4) : (8 + Math.random() * 8)) + 'px';
+      el.style.animationDuration = (type === 'fire-shower' ? (4 + Math.random() * 2) : (6 + Math.random() * 3)) + 's';
+      el.style.animationDelay = (Math.random() * 2) + 's';
+      floatingContainer.appendChild(el);
       el.addEventListener('animationend', () => el.remove());
     }
-    setInterval(() => createParticle('heart'), 400);
-    setInterval(() => createParticle('sparkle'), 200);
+    setInterval(() => createFloating('heart'), 1200);
+    setInterval(() => createFloating('fire-shower'), 1000);
     // Audio handling
     const audio = document.getElementById('bg-music');
     document.body.addEventListener('click', () => {
@@ -888,9 +710,7 @@
     // Popup handling
     function closePopup() {
       const popup = document.getElementById('welcome-popup');
-      const popupContent = popup.querySelector('.popup-content');
-      popupContent.style.animation = 'fadeOut 0.4s ease-in-out forwards';
-      setTimeout(() => popup.remove(), 400);
+      popup.remove();
     }
     document.getElementById('welcome-popup').addEventListener('click', (e) => {
       if (e.target === e.currentTarget) closePopup();
@@ -898,8 +718,9 @@
     document.getElementById('welcome-popup').addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') closePopup();
     });
-    // Focus popup for immediate keyboard interaction
-    document.getElementById('welcome-popup').focus();
+    window.addEventListener('load', () => {
+      document.getElementById('welcome-popup').focus();
+    });
   </script>
 </body>
 </html>
