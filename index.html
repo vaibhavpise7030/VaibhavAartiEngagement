@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vaibhav & Aarti — Engagement Invitation</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Great+Vibes&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+  <style>
+    /* Reset & base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+    min-height: 100vh;
+    font-family: 'Cormorant Garamond', serif;
+    background: linear-gradient(135deg, #f5e6d3 0%, #f0d7b8 100%);
+    color: #2a1e1e;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    margin: 15px;
+    border: 12px solid transparent;
+    border-image: linear-gradient(45deg, #d4af37, #fff, #8b6f47, #d4af37, #fff) 10;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+    overflow-x: hidden;
+    position: relative;
+  }
+    /* Welcome popup */
+    .popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(43, 26, 26, 0.75);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 100;
+    }
+    .popup-content {
+      background: rgba(255, 246, 227, 0.97);
+      padding: 30px;
+      border-radius: 25px;
+      border: 3px solid #d4af37;
+      box-shadow: 0 0 25px rgba(212, 175, 55, 0.6);
+      max-width: 80%;
+      width: 500px;
+      max-height: 75vh;
+      overflow-y: auto;
+      text-align: center;
+      position: relative;
+    }
+    .popup-content::before {
+      content: '💞';
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      margin-left: -1rem;
+      font-size: 2rem;
+      color: #d4af37;
+    }
+    .popup-content h2 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.5rem;
+      color: #d4af37;
+      margin-bottom: 10px;
+      text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+    }
+    .popup-content q {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: #2a1e1e;
+      line-height: 1.6;
+      display: block;
+      margin-bottom: 10px;
+    }
+    .popup-content p {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: #2a1e1e;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .popup-content p span {
+      display: block;
+    }
+    .popup-content p .and {
+      font-size: 1.8rem;
+      color: #d4af37;
+      font-family: 'Great Vibes', cursive;
+      margin: 5px 0;
+    }
+    .popup-close {
+    background: linear-gradient(45deg, #8b6f47, #d4af37);
+    color: #fff;
+    font-family: 'Playfair Display', serif;
+    font-size: 0.9rem;
+    padding: 6px 16px;
+    border-radius: 25px;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(212, 175, 55, 0.4);
+    display: inline-block;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+    .popup-close:hover {
+      background: linear-gradient(45deg, #d4af37, #b8860b);
+      transform: scale(1.05);
+    }
+    /* Couple with ring background */
+    .parallax-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.2;
+      z-index: -1;
+      transform: translateZ(0);
+    }
+    /* Header */
+    header {
+      text-align: center;
+      margin-bottom: 12px;
+      position: relative;
+    }
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3.5rem;
+      color: #8b6f47;
+      text-shadow: 2px 2px 8px rgba(255, 255, 255, 0.6), 0 0 10px rgba(212, 175, 55, 0.5);
+      opacity: 0;
+      animation: fadeInUp 1.5s forwards, sparkle 3s infinite;
+    }
+    .subheader {
+      font-family: 'Playfair Display', serif;
+      color: #1a0f0f;
+      margin-top: 4px;
+      opacity: 0;
+      animation: fadeInUp 1.5s 0.3s forwards;
+      line-height: 1.6;
+      background: linear-gradient(135deg, rgba(255, 246, 227, 0.95), rgba(255, 235, 205, 0.95));
+      padding: 10px 15px;
+      border: 2px dashed #d4af37;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+      max-width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .subheader:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+    }
+    .subheader .title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      text-shadow: 1px 1px 3px rgba(212, 175, 55, 0.3);
+      display: block;
+    }
+    .subheader .date {
+      font-size: 1.5rem;
+      font-style: italic;
+      text-shadow: 1px 1px 3px rgba(212, 175, 55, 0.3);
+      display: block;
+    }
+    /* Intro text */
+    #intro {
+      font-size: 1.4rem;
+      max-width: 90%;
+      text-align: center;
+      margin-bottom: 12px;
+      line-height: 1.7;
+      color: #2a1e1e;
+      opacity: 0;
+      animation: fadeInUp 1.5s 0.6s forwards;
+    }
+    /* Enhanced countdown container */
+    #countdown {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 4px;
+      background: linear-gradient(135deg, #fff8f0 0%, #f9e4e2 100%);
+      padding: 10px;
+      border-radius: 18px;
+      box-shadow: 0 4px 10px rgba(188, 143, 143, 0.3);
+      margin-bottom: 12px;
+      border: 1px solid #bc8f8f;
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      animation: fadeInUp 1.5s 0.9s forwards, pulse 4s infinite ease-in-out;
+      z-index: 10; /* Ensure countdown stays above other elements */
+    }
+    #countdown::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at center, rgba(188, 143, 143, 0.2), transparent 70%);
+      opacity: 0.4;
+      z-index: -1;
+    }
+    .countdown-unit {
+      text-align: center;
+      font-weight: 700;
+      cursor: default;
+      transition: transform 0.3s ease, background 0.3s ease;
+      padding: 5px;
+      background: #fffaf0;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(188, 143, 143, 0.2);
+    }
+    .countdown-unit:hover {
+      transform: scale(1.05);
+      background: #f9e4e2;
+    }
+    .countdown-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: #8b475d;
+      text-shadow: 1px 1px 3px rgba(188, 143, 143, 0.4);
+      line-height: 1;
+    }
+    .countdown-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      margin-top: 2px;
+      color: #8b475d;
+    }
+    /* Buttons container */
+    .buttons {
+      display: flex;
+      gap: 25px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      opacity: 0;
+      animation: fadeInUp 1.5s 1.2s forwards;
+    }
+    .btn {
+      background: linear-gradient(45deg, #8b6f47, #d4af37);
+      color: #fff;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      padding: 10px 22px;
+      border-radius: 35px;
+      text-decoration: none;
+      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.6), 0 0 20px rgba(212, 175, 55, 0.4);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+      min-width: 140px;
+      animation: btnPulse 2s infinite ease-in-out;
+    }
+    .btn:hover {
+      background: linear-gradient(45deg, #d4af37, #b8860b);
+      transform: translateY(-3px) scale(1.1);
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.8), 0 0 25px rgba(212, 175, 55, 0.6);
+    }
+    .btn i {
+      font-size: 1.1rem;
+    }
+    /* Message with highlighted border */
+    .message {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      max-width: 90%;
+      text-align: center;
+      color: #2a1e1e;
+      margin-bottom: 12px;
+      line-height: 1.7;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 10px;
+      border-radius: 12px;
+      border: 2px solid #d4af37;
+      box-shadow: 0 0 12px rgba(212, 175, 55, 0.5);
+      opacity: 0;
+      animation: fadeInUp 1.5s 1.5s forwards;
+    }
+    /* Contact section */
+    .contact {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 15px;
+      border-radius: 12px;
+      border: 2px solid #d4af37;
+      box-shadow: 0 0 12px rgba(212, 175, 55, 0.5);
+      opacity: 0;
+      animation: fadeInUp 1.5s 1.8s forwards;
+    }
+    .contact-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: #2a1e1e;
+      line-height: 1.7;
+    }
+    .contact-icons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+    }
+    .contact a {
+      font-size: 2.2rem;
+      color: #8b6f47;
+      transition: transform 0.3s ease, color 0.3s ease;
+      animation: contactBounce 1.5s infinite ease-in-out;
+    }
+    .contact a.whatsapp {
+      color: #25d366;
+    }
+    .contact a.call {
+      color: #007bff;
+    }
+    .contact a:hover {
+      transform: scale(1.2);
+      color: #d4af37;
+    }
+    /* Contact animation */
+    @keyframes contactBounce {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+      100% { transform: translateY(0); }
+    }
+    /* Floral borders */
+    .floral-border {
+      position: absolute;
+      width: 100%;
+      height: 40px;
+      background: url('https://www.transparenttextures.com/patterns/floral-pattern.png') repeat-x;
+      opacity: 0.3;
+      z-index: 1;
+      animation: sway 10s infinite ease-in-out;
+    }
+    .floral-top {
+      top: 0;
+    }
+    .floral-border.floral-bottom {
+      bottom: 0;
+      transform: rotate(180deg);
+    }
+    /* Floating elements (hearts and sparkles only) */
+    .floating {
+      position: fixed;
+      pointer-events: none;
+      user-select: none;
+      z-index: 0;
+      font-size: 12px;
+      animation-timing-function: ease-in-out;
+    }
+    .heart {
+      color: #d4af37;
+      animation: floatUp 8s infinite;
+    }
+    .fire-shower {
+      background: radial-gradient(circle, #d4af37 10%, transparent 70%);
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      animation: floatUpFire 6s infinite;
+      box-shadow: 0 0 6px #d4af37, 0 0 12px #d4af37;
+    }
+    @keyframes floatUp {
+      0% { transform: translateY(0) rotate(0deg) scale(1); opacity: 0.8; }
+      50% { transform: translateY(-60vh) rotate(180deg) scale(1.2); opacity: 0.9; }
+      100% { transform: translateY(-120vh) rotate(360deg) scale(1); opacity: 0; }
+    }
+    @keyframes floatUpFire {
+      0% { transform: translateY(0) translateX(0) scale(1); opacity: 1; }
+      50% { opacity: 0.7; transform: translateY(-60vh) translateX(calc(15px * var(--random-x))) scale(1.1); }
+      100% { transform: translateY(-120vh) translateX(calc(15px * var(--random-x))) scale(1); opacity: 0; }
+    }
+    /* Pulse animation for countdown */
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+      100% { transform: scale(1); }
+    }
+    /* Button pulse animation */
+    @keyframes btnPulse {
+      0% { transform: scale(1); box-shadow: 0 4px 15px rgba(212, 175, 55, 0.6), 0 0 20px rgba(212, 175, 55, 0.4); }
+      50% { transform: scale(1.03); box-shadow: 0 6px 20px rgba(212, 175, 55, 0.8), 0 0 25px rgba(212, 175, 55, 0.6); }
+      100% { transform: scale(1); box-shadow: 0 4px 15px rgba(212, 175, 55, 0.6), 0 0 20px rgba(212, 175, 55, 0.4); }
+    }
+    /* Sway animation for floral borders */
+    @keyframes sway {
+      0% { background-position: 0 0; }
+      50% { background-position: 80px 0; }
+      100% { background-position: 0 0; }
+    }
+    /* Sparkle animation for header */
+    @keyframes sparkle {
+      0% { text-shadow: 2px 2px 8px rgba(255, 255, 255, 0.6), 0 0 10px rgba(212, 175, 55, 0.5); }
+      50% { text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.8), 0 0 12px rgba(212, 175, 55, 0.7); }
+      100% { text-shadow: 2px 2px 8px rgba(255, 255, 255, 0.6), 0 0 10px rgba(212, 175, 55, 0.5); }
+    }
+    /* FadeInUp animation */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    /* Responsive */
+    @media (max-width: 768px) {
+      body {
+        margin: 10px;
+      padding: 12px;
+      border: 10px solid transparent;
+      border-image: linear-gradient(45deg, #d4af37, #fff, #8b6f47, #d4af37, #fff) 8;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+      }
+      h1 {
+        font-size: 2.8rem;
+      }
+      .subheader {
+        padding: 8px 12px;
+        border-radius: 12px;
+      }
+      .subheader .title {
+        font-size: 1.6rem;
+      }
+      .subheader .date {
+        font-size: 1.4rem;
+      }
+      #intro {
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+      }
+      #countdown {
+        gap: 3px;
+        padding: 8px;
+        border-radius: 16px;
+        margin-bottom: 10px;
+        z-index: 10; /* Ensure visibility */
+        min-height: 80px; /* Prevent collapse */
+        width: 100%; /* Full width for visibility */
+        max-width: 90%; /* Constrain width */
+        display: grid; /* Maintain grid layout */
+      }
+      .countdown-number {
+        font-size: 1.8rem;
+      }
+      .countdown-label {
+        font-size: 0.7rem;
+        letter-spacing: 1px;
+      }
+      .buttons {
+        flex-direction: column;
+        gap: 20px;
+        margin-bottom: 15px;
+      }
+      .btn {
+        width: 100%;
+        justify-content: center;
+        font-size: 1.1rem;
+        padding: 8px 18px;
+        text-align: center;
+        min-width: 0;
+      }
+      .btn i {
+        font-size: 1rem;
+      }
+      .message {
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+        padding: 8px;
+      }
+      .contact {
+        gap: 8px;
+        margin-bottom: 10px;
+        padding: 12px;
+      }
+      .contact-text {
+        font-size: 1.3rem;
+      }
+      .contact a {
+        font-size: 2rem;
+      }
+      .popup-content {
+        padding: 20px;
+        width: 85%;
+        max-height: 70vh;
+      }
+      .popup-content::before {
+        font-size: 1.8rem;
+        top: -18px;
+        margin-left: -0.9rem;
+      }
+      .popup-content h2 {
+        font-size: 2rem;
+      }
+      .popup-content q, .popup-content p {
+        font-size: 1.1rem;
+        line-height: 1.5;
+      }
+      .popup-content p .and {
+        font-size: 1.5rem;
+      }
+      .popup-close {
+		font-size: 0.8rem;
+		padding: 5px 14px;
+		border-radius: 22px;
+		}
+    }
+    @media (max-width: 480px) {
+      body {
+         margin: 8px;
+      padding: 10px;
+      border: 8px solid transparent;
+      border-image: linear-gradient(45deg, #d4af37, #fff, #8b6f47, #d4af37, #fff) 6;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+      }
+      h1 {
+        font-size: 2.2rem;
+      }
+      .subheader {
+        padding: 6px 10px;
+        border-radius: 10px;
+      }
+      .subheader .title {
+        font-size: 1.4rem;
+      }
+      .subheader .date {
+        font-size: 1.2rem;
+      }
+      #intro {
+        font-size: 1.1rem;
+        margin-bottom: 8px;
+        line-height: 1.6;
+      }
+      #countdown {
+        gap: 2px;
+        padding: 6px;
+        border-radius: 14px;
+        border: 1px solid #bc8f8f;
+        margin-bottom: 8px;
+        z-index: 10; /* Ensure visibility */
+        min-height: 70px; /* Prevent collapse */
+        width: 100%; /* Full width for visibility */
+        max-width: 95%; /* Constrain width */
+        display: grid; /* Maintain grid layout */
+      }
+      .countdown-unit {
+        padding: 4px;
+        border-radius: 6px;
+      }
+      .countdown-number {
+        font-size: 1.4rem;
+        font-weight: 700;
+      }
+      .countdown-label {
+        font-size: 0.6rem;
+        letter-spacing: 0.8px;
+        margin-top: 1px;
+      }
+      .buttons {
+        gap: 15px;
+        margin-bottom: 12px;
+      }
+      .btn {
+        padding: 7px 14px;
+        font-size: 1rem;
+        min-width: 0;
+        max-width: 90%;
+        text-align: center;
+        justify-content: center;
+      }
+      .btn i {
+        font-size: 0.9rem;
+        margin-right: 5px;
+      }
+      .message {
+        font-size: 1.1rem;
+        padding: 8px;
+        border-radius: 10px;
+        margin-bottom: 12px;
+      }
+      .contact {
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 12px;
+        padding: 10px;
+      }
+      .contact-text {
+        font-size: 1.1rem;
+        line-height: 1.6;
+      }
+      .contact-icons {
+        gap: 15px;
+      }
+      .contact a {
+        font-size: 1.8rem;
+      }
+      .floral-border {
+        height: 30px;
+      }
+      .popup-content {
+        padding: 15px;
+        width: 90%;
+        max-height: 65vh;
+      }
+      .popup-content::before {
+        font-size: 1.6rem;
+        top: -16px;
+        margin-left: -0.8rem;
+      }
+      .popup-content h2 {
+        font-size: 1.6rem;
+      }
+      .popup-content q, .popup-content p {
+        font-size: 0.9rem;
+        line-height: 1.4;
+      }
+      .popup-content p .and {
+        font-size: 1.2rem;
+      }
+      .popup-close {
+      font-size: 0.7rem;
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+    }
+  </style>
+</head>
+<body>
+  <!-- Welcome popup -->
+  <!--<div class="popup" id="welcome-popup" tabindex="0">
+    <div class="popup-content">
+      <h2>Our Hearts Unite</h2>
+      <q>Two souls with but a single thought, two hearts that beat as one.</q>
+      <p>
+        <span>Vaibhav</span>
+        <span>S/O Vitthal & Aruna Pise</span>
+        <span class="and">&</span>
+        <span>Aarti</span>
+        <span>D/O Subhash & Sangita Pharande</span>
+        <br>
+        <span>Invite you to celebrate our engagement!</span>
+      </p>
+      <div class="popup-close" onclick="closePopup()">Join Our Joy</div>
+    </div>
+  </div> -->
+  <div class="parallax-bg"></div>
+  <div class="floral-border floral-top"></div>
+  <div class="floral-border floral-bottom"></div>
+  <header>
+    <h1>Vaibhav & Aarti</h1>
+    <div class="subheader">
+      <span class="title">An Engagement to Remember</span>
+      <span class="date">17 August 2025, 11 AM onwards</span>
+    </div>
+  </header>
+  <div id="intro"></div>
+  <div id="countdown">
+    <div class="countdown-unit">
+      <div id="days" class="countdown-number">0</div>
+      <div class="countdown-label">Days</div>
+    </div>
+    <div class="countdown-unit">
+      <div id="hours" class="countdown-number">0</div>
+      <div class="countdown-label">Hours</div>
+    </div>
+    <div class="countdown-unit">
+      <div id="minutes" class="countdown-number">0</div>
+      <div class="countdown-label">Minutes</div>
+    </div>
+    <div class="countdown-unit">
+      <div id="seconds" class="countdown-number">0</div>
+      <div class="countdown-label">Seconds</div>
+    </div>
+  </div>
+  <div class="buttons">
+    <a href="https://maps.app.goo.gl/T7YadotJwYTETd5DA?g_st=ipc" target="_blank" class="btn">
+      <i class="fas fa-map-marker-alt"></i> Venue
+    </a>
+    <a href="assets/invite-card.jpeg" download class="btn">
+      <i class="fas fa-file-download"></i> Download Invite
+    </a>
+  </div>
+  <div id="message" class="message"></div>
+  <!--<div class="contact">
+    <div class="contact-text">Contact Us</div>
+    <div class="contact-icons">
+      <a href="https://wa.me/917030888685" target="_blank" class="whatsapp" aria-label="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+      <a href="tel:+917030888685" class="call" aria-label="Call">
+        <i class="fas fa-phone-alt"></i>
+      </a>
+    </div>
+  </div> -->
+  <div id="floating-container"></div>
+  <audio id="bg-music" src="assets/song.mp3" autoplay loop playsinline></audio>
+  <script src="https://unpkg.com/typeit@8.7.0/dist/index.umd.js"></script>
+  <script>
+    // Typewriter intro text
+    new TypeIt('#intro', {
+      strings: ["You are cordially invited to our engagement ceremony."],
+      speed: 40,
+      waitUntilVisible: true
+    }).go();
+    // Typewriter message text
+   new TypeIt('#message', {
+      strings: ["Join us to celebrate the start of our forever love.<br>Your presence will make our day truly magical.<br>💍<br>Vaibhav<br>S/O Vitthal & Aruna Pise<br><span class='and'>&</span><br>Aarti<br>D/O Subhash & Sangita Pharande<br><br>We can’t wait to share this joy with you!"],
+      speed: 70,
+      waitUntilVisible: true
+    }).go();
+    // Countdown
+    const eventTime = new Date('2025-08-17T11:00:00').getTime();
+    const daysEl = document.getElementById('days');
+    const hoursEl = document.getElementById('hours');
+    const minutesEl = document.getElementById('minutes');
+    const secondsEl = document.getElementById('seconds');
+    function updateCountdown() {
+      const now = Date.now();
+      const diff = eventTime - now;
+      if (diff <= 0) {
+        clearInterval(countdownInterval);
+        document.getElementById('countdown').innerHTML = `<div style="font-size:1.3rem; color:#8b475d; font-family:'Playfair Display', serif;">
+          The moment has arrived! 💍</div>`;
+        return;
+      }
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+      daysEl.textContent = days;
+      hoursEl.textContent = hours.toString().padStart(2, '0');
+      minutesEl.textContent = minutes.toString().padStart(2, '0');
+      secondsEl.textContent = seconds.toString().padStart(2, '0');
+    }
+    updateCountdown();
+    const countdownInterval = setInterval(updateCountdown, 1000);
+    // Floating elements (hearts and sparkles only)
+    const floatingContainer = document.getElementById('floating-container');
+    function createFloating(type) {
+      const el = document.createElement('div');
+      el.classList.add('floating');
+      if (type === 'heart') {
+        el.classList.add('heart');
+        el.textContent = '💖';
+      } else if (type === 'fire-shower') {
+        el.classList.add('fire-shower');
+        el.style.setProperty('--random-x', Math.random() * 2 - 1);
+      }
+      el.style.left = Math.random() * 100 + 'vw';
+      el.style.fontSize = (type === 'fire-shower' ? (4 + Math.random() * 4) : (8 + Math.random() * 8)) + 'px';
+      el.style.animationDuration = (type === 'fire-shower' ? (4 + Math.random() * 2) : (6 + Math.random() * 3)) + 's';
+      el.style.animationDelay = (Math.random() * 2) + 's';
+      floatingContainer.appendChild(el);
+      el.addEventListener('animationend', () => el.remove());
+    }
+    setInterval(() => createFloating('heart'), 2000);
+    setInterval(() => createFloating('fire-shower'), 2000);
+    // Audio handling
+    const audio = document.getElementById('bg-music');
+    document.body.addEventListener('click', () => {
+      if (audio.paused) {
+        audio.muted = false;
+        audio.play();
+      }
+    }, { once: true });
+    // Popup handling
+    function closePopup() {
+      const popup = document.getElementById('welcome-popup');
+      popup.remove();
+    }
+    document.getElementById('welcome-popup').addEventListener('click', (e) => {
+      if (e.target === e.currentTarget) closePopup();
+    });
+    document.getElementById('welcome-popup').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') closePopup();
+    });
+    window.addEventListener('load', () => {
+      document.getElementById('welcome-popup').focus();
+    });
+  </script>
+</body>
+</html>
